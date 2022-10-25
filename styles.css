@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400;1,500&family=Ubuntu:wght@400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
-
+p{
+  font-size: 20px;
+}
 body{
     display: flex;
     align-items: center;
@@ -15,29 +15,32 @@ body{
     min-height: 100vh;
     background-image:linear-gradient(#4397bd,#6dacc9,#99c5d9) ;
 }
+::selection{
+  color: #fff;
+  background: #4397bd;
+}
 .wrapper{
- 
     padding: 25px;
     background: #fff;
     border-radius: 10px;
-
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-.cards, .card, .view{
+.cards, .card, .view, .details, p{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .cards{
-    height:400px ;
-    width: 400px;
+    height:350px ;
+    width: 350px;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 .cards .card{
   cursor: pointer;
   position: relative;
-  perspective: 800px; 
+  perspective: 1000px; 
   transform-style: preserve-3d;
   height: calc(100% / 4 - 10px);
   width: calc(100% / 4 - 10px);
@@ -62,7 +65,7 @@ body{
     transform: translateX(8px);
   }
 }
- .card .view{
+ .cards .card .view{
     width: 100%;
     height: 100%; 
     user-select: none;
@@ -75,24 +78,99 @@ body{
     transition: transform 0.25s linear;
   }
 
-  
-  .card .front-view span{
-    font-size: 43px;
-    color: #4397bd;
+  .card .front-view img{
+    max-width: 17px;
   }
-  .card .back-view img{
-    
-    max-width: 45px;
-   }
-   
   .card .back-view{
     transform: rotateY(-180deg);
   }
-
-  .card.flip .back-view{
-    transform: rotateY(0);
+  .card .back-view img{
+    max-width: 40px;
   }
-
   .card.flip .front-view{
     transform: rotateY(180deg);
   }
+  .card.flip .back-view{
+    transform: rotateY(0);
+  }
+  
+  .details{
+    width:100% ;
+    margin-top: 15px;
+    padding: 0 20px;
+    border-radius:7px ;
+    background: rgb(255, 251, 251);
+    height: clac(100% / 4 -30px);
+    justify-content: space-between;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  .details p{
+    font-size: 18px;
+    height: 17px;
+    padding-right: 18px;
+    border-right: 1px solid #ccc;
+  }
+ 
+  .details p span{
+    margin-left: 8px;
+  }
+  .details p b{
+    font-weight: 500;
+  }
+
+  .details button{
+    cursor: pointer;
+    font-size: 14px;
+    color: #4397bd;
+    border-radius: 4px;
+    padding: 4px 11px;
+    background: rgb(253, 249, 249) ;
+    border: 2px solid #4397bd;
+    transition: 0.3s ease;
+  }
+  .details button:hover{
+    color: #fff;
+    background: #4397bd;
+  }
+  
+  
+@media screen and (max-width: 700px) {
+  .cards{
+    height: 350px;
+    width: 350px;
+  }
+  .card .front-view img{
+    max-width: 16px;
+  }
+  .card .back-view img{
+    max-width: 40px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .cards{
+    height: 300px;
+    width: 300px;
+  }
+  .card .back-view img{
+    max-width: 35px;
+  }
+  .details{
+    margin-top: 10px;
+    padding: 0 15px;
+    height: calc(100% / 4 - 20px);
+  }
+  .details p{
+    height: 15px;
+    font-size: 17px;
+    padding-right: 13px;
+  }
+  .details button{
+    font-size: 13px;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    background: #4397bd;
+  }
+
+}
